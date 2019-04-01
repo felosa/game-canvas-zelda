@@ -4,9 +4,9 @@ class Link {
     this.vy=50;
     this.grav=2;
     this.linkW=50;
+    this.step = 30;
     this.x= posLinkX;
     this.y= posLinkY;
-    this.step = 10;
     this.image = image;
     
   }

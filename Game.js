@@ -23,6 +23,7 @@ class Game {
     this.imgLink2.src = "./images/zeldalink_zpsccb69809.png";
     this.link2 = new Link(this, this.imgLink2, this.posLink2X, this.posLink2Y);
 
+   
     this.wolves= [];
     this.wolves.push(new Wolf(this));
     this.wolves.push(new Wolf(this));
@@ -59,7 +60,7 @@ class Game {
   }
 
   move(){
-  
+
     window.onkeydown = function (e) {
       switch (e.keyCode) {
         case 38:
@@ -96,6 +97,8 @@ class Game {
       }
     }.bind(this);
     
+
+    this.wolves.forEach(wolf => wolf.moveWolf());
 
   }
 
