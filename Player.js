@@ -3,7 +3,7 @@ class Link {
     this.game = game;
     this.vy=50;
     this.grav=2;
-    this.step = 30;
+    this.step = 15;
     this.x= posLinkX;
     this.y= posLinkY;
     this.image = image;
@@ -18,15 +18,13 @@ class Link {
     this.game.ctx.drawImage(this.image,this.x,this.y,50,50);
     this.drawArrows(this.x,this.y);
     this.game.ctx.closePath();
-    };
+    }
   
   drawArrows(){
-    this.game.ctx.beginPath();
     if (this.arrows.length >= 1){
     this.arrows.forEach(element => element.drawArrow(this.x, this.y));
     this.arrows.forEach(element => element.moveArrow());
     }
-    this.game.ctx.closePath();
   }
 
 
