@@ -3,8 +3,8 @@ class Arrow {
     this.game = game;
     
     
-    this.imgWolf = new Image();
-    this.imgWolf.src = "./images/link.png";
+    this.img = new Image();
+    this.img.src = "./images/link.png";
     this.x=posIniX;
     this.y= posIniY;
     this.step = 10;
@@ -14,7 +14,7 @@ class Arrow {
 
 drawArrow() {
   this.game.ctx.beginPath();
-  this.game.ctx.drawImage(this.image,this.x,this.y,50,50);
+  this.game.ctx.drawImage(this.img,this.x,this.y,50,50);
   this.game.ctx.closePath();
 }
 
