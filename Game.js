@@ -11,6 +11,7 @@ class Game {
     this.h2 = this.h/2;   
     this.background = new Background(this);
     
+  
     this.posLink1X = 100;
     this.posLink1Y = this.h - 125;
     this.imgLink1 = new Image();
@@ -23,17 +24,19 @@ class Game {
     this.imgLink2.src = "./images/zeldalink_zpsccb69809.png";
     this.link2 = new Link(this, this.imgLink2, this.posLink2X, this.posLink2Y);
 
-   
+    this.posIniW= 100;
     this.wolves= [];
-    this.wolves.push(new Wolf(this));
-    this.wolves.push(new Wolf(this));
-    this.wolves.push(new Wolf(this));
-    this.wolves.push(new Wolf(this));
+    this.wolves.push(new Wolf(this,this.posIniW));
+    this.wolves.push(new Wolf(this, this.posIniW+100));
+    this.wolves.push(new Wolf(this, this.posIniW+200));
+    this.wolves.push(new Wolf(this, this.posIniW+300));
     
     this.counter = 0;
     this.intervalId;
   
   }
+
+
 
 
   startGame() {
@@ -42,6 +45,7 @@ class Game {
       this.counter++;
       this.draw();
       this.move();
+      this.colision();
     }, 1000/60);
   }
 
@@ -55,6 +59,7 @@ class Game {
     this.link1.drawLink(this.imgLink1,this.posLink1X, this.posLink1Y);
     this.link2.drawLink(this.imgLink2, this.posLink2X, this.posLink2Y);
     this.wolves.forEach(wolf => wolf.drawWolf());
+    console.log(this.link1.x);
     
     
   }
@@ -62,6 +67,7 @@ class Game {
   move(){
 
     window.onkeydown = function (e) {
+      
       switch (e.keyCode) {
         case 38:
         this.link2.moveLinkUp();
@@ -95,12 +101,28 @@ class Game {
         this.link1.moveLinkLeft();
         break;
       }
+    
+    
     }.bind(this);
     
 
-    this.wolves.forEach(wolf => wolf.moveWolf());
+    // this.wolves.forEach(wolf => wolf.moveWolf());
 
   }
 
+
+  colision(){
+    
+    if (this.link1.x < this.link2.x + 50 &&
+      this.link1.x + 50 > this.link2.x  &&
+      this.link1.y < this.link2.y + 50 &&
+      50 + this.link1.y > this.link2.y){
+        console.log("colision");
+      }
+      
+
+
+
+  }
 
 }
