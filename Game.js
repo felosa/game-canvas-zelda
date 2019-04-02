@@ -100,6 +100,10 @@ class Game {
         case 65:
         this.link1.moveLinkLeft();
         break;
+
+        case 18:
+        this.link1.shoot();
+        break;
       }
     
     
@@ -119,10 +123,10 @@ class Game {
       50 + this.link1.y > this.link2.y){
         console.log("colision");
       }
-      
-
-
 
   }
+
+
+  
 
 }

@@ -25,27 +25,27 @@ class Wolf {
     this.game.ctx.closePath();
   }
 
-  // moveWolf() {
-  //   this.counterY++
+  moveWolf() {
+    this.counterY++
 
-  //   if (this.counterY <= 30 ){
-  //     this.dirY=Boolean(Math.round(Math.random()));
-  //       if (this.dirY ===true){ this.y -= this.vy;}
-  //       else {this.y += this.vy;} 
-  //   }
+    if (this.counterY <= 30 ){
+      this.dirY=Boolean(Math.round(Math.random()));
+        if (this.dirY ===true){ this.y -= this.vy;}
+        else {this.y += this.vy;} 
+    }
+
+    
+    if ((this.counterY > 31) && (this.counterY < 60)){
+    //   this.counterX++
+      this.dirY=Boolean(Math.round(Math.random()));;
+        if (this.dirY ===true){ this.x -= this.vy;}
+        else {this.x += this.vy;}
+    }
 
 
-  //   if ((this.counterY > 31) && (this.counterY < 60)){
-  //   //   this.counterX++
-  //     this.dirY=Boolean(Math.round(Math.random()));;
-  //       if (this.dirY ===true){ this.x -= this.vy;}
-  //       else {this.x += this.vy;}
-  //   }
-
-
-  //   if(this.counterY ===60){this.counterY=0;}
+    if(this.counterY ===60){this.counterY=0;}
    
 
-  // }
+  }
     
 }
