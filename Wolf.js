@@ -1,5 +1,5 @@
 class Wolf {
-  constructor(game) {
+  constructor(game, posIniX, posIniY) {
     this.game = game;
     
     this.imgWolf = new Image();
@@ -15,6 +15,10 @@ class Wolf {
     this.stepMaxY= 200;
     this.dirY;
     this.imgWidht=110;
+    this.x= posIniX;
+    this.y=posIniY;
+    this.lastX = 0;
+    this.lastY=0;
 
     this.frames = 3;
     this.frameIndex = 0;
@@ -53,30 +57,33 @@ class Wolf {
 
   moveWolf() {
 
-
-    if (this.game.framescounter % 1000 === 0){
-      console.log(this.game.counter);
+    console.log(this.game.framescounter)
+    if (this.game.framescounter % 30 === 0){
     this.dirY= Math.floor(Math.random() * (5 - 1) + 1);    
     if((this.y > 80) && (this.y < this.game.canvas.height -130) && (this.x > 90) && (this.x < this.game.canvas.width -120))
     {
         if (this.dirY ===1){ 
           if (this.y <= 80){this.y = 200;}
           this.imgWolf.src = "./images/wolfup.png";
+          this.lastY=this.y;
           this.y -= this.vy;
         }
         if (this.dirY ===2){ 
           if (this.y >= this.game.canvas.height -130){this.y = this.canvas.height -300;}
           this.imgWolf.src = "./images/wolfdown.png";
+          this.lastY=this.y;
           this.y += this.vy;
         }
         if (this.dirY ===3){
           if (this.x <= 90){this.x = 300;}
           this.imgWolf.src = "./images/wolfizquierda.png";
+          this.lastX=this.x;
            this.x -= this.vy;
           }
         if (this.dirY ===4){
           if (this.x >= this.game.canvas.width-120){this.x = this.game.canvas.width-300;}
           this.imgWolf.src = "./images/wolfderecha.png";
+          this.lastX=this.x;
            this.x += this.vy;
           }
     }

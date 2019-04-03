@@ -1,5 +1,5 @@
 /** @type {CanvasRenderingContext2D} */
-class Game {
+class Game1 {
   constructor(id, width, height){
     this.canvas = document.getElementById(id);
     this.ctx = this.canvas.getContext("2d");
@@ -22,10 +22,12 @@ class Game {
     this.heartsLink2=[];
     this.lifeLink2= 3;
     this.posLink2X = 750;
-    this.posLink2Y = 100;
+    this.posLink2Y = this.h - 125;
     this.imgLink2 = new Image();
     this.imgLink2.src = "./images/linkrojoizq.png";
     this.link2 = new Link(this, this.imgLink2, this.posLink2X, this.posLink2Y);
+
+    this.dragon = new Dragon(this);
 
     
     this.wolves= [];
@@ -83,6 +85,7 @@ class Game {
     this.heartsLink1.forEach(heart => heart.drawHeart());
     this.heartsLink2.forEach(heart => heart.drawHeart());
     this.wolves.forEach(wolf => wolf.drawWolf());
+    this.dragon.drawDragon();
     
   }
 
