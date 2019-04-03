@@ -52,6 +52,10 @@ class Wolf {
 
 
   moveWolf() {
+
+
+    if (this.game.framescounter % 1000 === 0){
+      console.log(this.game.counter);
     this.dirY= Math.floor(Math.random() * (5 - 1) + 1);    
     if((this.y > 80) && (this.y < this.game.canvas.height -130) && (this.x > 90) && (this.x < this.game.canvas.width -120))
     {
@@ -76,7 +80,7 @@ class Wolf {
            this.x += this.vy;
           }
     }
-
+  }
     
     }
 

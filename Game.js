@@ -147,9 +147,9 @@ class Game {
 
   }
 
-  moveWolves(){
-    this.wolves.forEach(wolf => wolf.moveWolf());
-  }
+  // moveWolves(){
+  //   this.wolves.forEach(wolf => wolf.moveWolf());
+  // }
 
 
   colision(){
@@ -160,6 +160,33 @@ class Game {
       50 + this.link1.y > this.link2.y){
         console.log("colision");
       }
+
+      //Colision entre player1 y lobos
+      this.wolves.forEach(lobo =>{
+
+        if (this.link1.x < lobo.x + 50 &&
+          this.link1.x + 50 > lobo.x  &&
+          this.link1.y < lobo.y + 50 &&
+          50 + this.link1.y > lobo.y){
+            console.log("colision");
+          }
+
+      })
+     
+
+      //Colision entre player 2 y lobos
+
+      this.wolves.forEach((lobo,index,arr) =>{
+
+        if (this.link2.x < lobo.x + 50 &&
+          this.link2.x + 50 > lobo.x  &&
+          this.link2.y < lobo.y + 50 &&
+          50 + this.link2.y > lobo.y){
+            console.log("colision");
+          }
+
+      })
+
 // Colision entre flecha y personajes
         this.link2.arrows.forEach((arrow,index,arr) => {
   
@@ -168,6 +195,7 @@ class Game {
           this.link1.y < arrow.y + 30 &&
           50+ this.link1.y > arrow.y) {
             this.lifeLink1-=1
+            this.heartsLink1.pop();
             if(this.lifeLink1 ===0){console.log("muerto")}
             console.log("colision flecha");
             arr.splice(index,1);
@@ -181,12 +209,42 @@ class Game {
             this.link2.y < arrow.y + 30 &&
             50+ this.link2.y > arrow.y) {
               this.lifeLink2-=1
+              this.heartsLink2.shift();
               if(this.lifeLink2 ===0){console.log("muerto")}
               console.log("colision flecha"); 
               arr.splice(index,1);
               
          }
     });
+
+    //Colision entre lobos y flechas link 2
+    this.link2.arrows.forEach((arrow,index,arr) => {
+
+      for (var i=0; i< this.wolves.length; i++) {
+        if (this.wolves[i].x < arrow.x + 5 &&
+          this.wolves[i].x + 50 > arrow.x &&
+          this.wolves[i].y < arrow.y + 30 &&
+          50+ this.wolves[i].y > arrow.y) {
+            
+            console.log("colision flecha");
+            arr.splice(index,1);
+          }
+       }
+  });
+//Colision entre lobos y flechas Link1
+  this.link1.arrows.forEach((arrow,index,arr) => {
+
+    for (var i=0; i< this.wolves.length; i++) {
+      if (this.wolves[i].x < arrow.x + 5 &&
+        this.wolves[i].x + 50 > arrow.x &&
+        this.wolves[i].y < arrow.y + 30 &&
+        50+ this.wolves[i].y > arrow.y) {
+          
+          console.log("colision flecha");
+          arr.splice(index,1);
+        }
+     }
+});
   
 }
 
