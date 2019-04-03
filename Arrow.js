@@ -1,44 +1,45 @@
 class Arrow {
-  constructor(player, posIniX, posIniY) {
+  constructor(player, posIniX, posIniY, dir) {
     this.game = player.game;
     
     
     this.img = new Image();
-    this.img.src = "./images/link.png";
+    this.img.src = "./images/arrow1.png";
     this.x=posIniX;
     this.y= posIniY;
-    this.step = 3;
+    this.step = 7;
+    this.dir = dir;
   }
 
 
 
 drawArrow() {
   this.game.ctx.beginPath();
-  this.game.ctx.drawImage(this.img,this.x,this.y,5,30);
+  //en principio la flecha es 5,30
+  this.game.ctx.drawImage(this.img,this.x,this.y,
+    60,
+    20);
   this.game.ctx.closePath();
 }
 
-
 moveArrow(){
-  {
+  switch(this.dir){
+    case(0):
     this.y -= this.step;
-  }
-}
-moveArrowDown(){
-  {
-    this.y += this.step;
-  }
-}
-moveArrowLeft(){
-  {
-    this.x -= this.step;
-  }
-}
-moveArrowRigth(){
-  {
+    break;
+    case(45):
     this.x += this.step;
+    break;
+    case(90):
+    this.y += this.step;
+    break;
+    case(135):
+    this.x -= this.step;
+    break;
   }
 }
+
+
 
 
 

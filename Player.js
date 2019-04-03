@@ -8,6 +8,8 @@ class Link {
     this.y= posLinkY;
     this.image = image;
     this.arrows=[];
+    this.dir= 0;
+    this.arrowX=this.x;
     
   }
 
@@ -22,20 +24,24 @@ class Link {
   
   drawArrows(){
     if (this.arrows.length >= 1){
-    this.arrows.forEach(element => element.drawArrow(this.x, this.y));
-    this.arrows.forEach(element => element.moveArrow());
+    this.arrows.forEach(element => {
+      element.drawArrow();
+      element.moveArrow();
+    })
+
     }
   }
 
 
-
   moveLinkUp(){
+    this.dir = 0;
     if(this.y > 80)
     {
       this.y -= this.step;
     }
   }
   moveLinkDown(){
+    this.dir = 90;
     if (this.y < this.game.canvas.height -130)
     {
     this.y += this.step;
@@ -43,20 +49,21 @@ class Link {
   }
 
   moveLinkLeft(){
+    this.dir = 135;
     if (this.x > 90){
     this.x -= this.step;
     }
   }
 
   moveLinkRight(){
+    this.dir=45;
     if (this.x < this.game.canvas.width -120)
     this.x += this.step;
   }
 
 
   shoot(){
-    this.arrows.push(new Arrow(this, this.x, this.y));
-
+    this.arrows.push(new Arrow(this, this.x, this.y, this.dir));
   }
 
 

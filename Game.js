@@ -11,25 +11,26 @@ class Game {
     this.h2 = this.h/2;   
     this.background = new Background(this);
     
-  
+    this.lifeLink1= 3;
     this.posLink1X = 100;
     this.posLink1Y = this.h - 125;
     this.imgLink1 = new Image();
-    this.imgLink1.src = "./images/provisoinal.png";
+    this.imgLink1.src = "./images/linkverdederecha.png";  
     this.link1 = new Link(this, this.imgLink1, this.posLink1X, this.posLink1Y);
     
+    this.lifeLink2= 3;
     this.posLink2X = 750;
     this.posLink2Y = 100;
     this.imgLink2 = new Image();
-    this.imgLink2.src = "./images/provisoinal.png";
+    this.imgLink2.src = "./images/linkrojoizq.png";
     this.link2 = new Link(this, this.imgLink2, this.posLink2X, this.posLink2Y);
 
     this.posIniW= 100;
     this.wolves= [];
-    this.wolves.push(new Wolf(this,this.posIniW));
-    this.wolves.push(new Wolf(this, this.posIniW+100));
-    this.wolves.push(new Wolf(this, this.posIniW+200));
-    this.wolves.push(new Wolf(this, this.posIniW+300));
+    this.wolves.push(new Wolf(this));
+    this.wolves.push(new Wolf(this));
+    this.wolves.push(new Wolf(this));
+    this.wolves.push(new Wolf(this));
     
     this.counter = 0;
     this.intervalId;
@@ -41,11 +42,17 @@ class Game {
 
   startGame() {
     this.intervalId = setInterval(()=>{
-      this.ctx.clearRect(0,0,this.w,this.h);
       this.counter++;
+      this.ctx.clearRect(0,0,this.w,this.h);
       this.draw();
       this.move();
+      if (this.counter===50){
+      this.wolves.forEach(wolf => wolf.moveWolf());
+      this.counter=0;
+    }
       this.colision();
+      
+
     }, 1000/60);
   }
 
@@ -59,12 +66,9 @@ class Game {
     this.link1.drawLink(this.imgLink1,this.posLink1X, this.posLink1Y);
     this.link2.drawLink(this.imgLink2, this.posLink2X, this.posLink2Y);
     this.wolves.forEach(wolf => wolf.drawWolf());
-    console.log(this.link1.x);
-    console.log(this.link2.arrows.forEach(arrow => arrow.y),"colision flecha");
-    
+    console.log(this.link1.x);  
     
   }
-
   move(){
 
     window.onkeydown = function (e) {
@@ -72,34 +76,42 @@ class Game {
       switch (e.keyCode) {
         case 38:
         this.link2.moveLinkUp();
+        this.imgLink2.src = "./images/linkrojoup.png";
         break;
         
         case 40:
         this.link2.moveLinkDown();
+        this.imgLink2.src = "./images/linkrojodown.png";
         break;
 
         case 39:
         this.link2.moveLinkRight();
+        this.imgLink2.src = "./images/linkrojoright.png";
         break;
         
         case 37:
         this.link2.moveLinkLeft();
+        this.imgLink2.src = "./images/linkrojoizq.png";
         break;
 
         case 87:
         this.link1.moveLinkUp();
+        this.imgLink1.src = "./images/linkverdearriba.png";
         break;
         
         case 83:
         this.link1.moveLinkDown();
+        this.imgLink1.src = "./images/linkverdeabajoa.png";
         break;
 
         case 68:
         this.link1.moveLinkRight();
+        this.imgLink1.src = "./images/linkverdederecha.png";
         break;
         
         case 65:
         this.link1.moveLinkLeft();
+        this.imgLink1.src = "./images/linkverdeizq.png";
         break;
 
         case 18:
@@ -115,8 +127,12 @@ class Game {
     }.bind(this);
     
 
-    this.wolves.forEach(wolf => wolf.moveWolf());
+    
 
+  }
+
+  moveWolves(){
+    this.wolves.forEach(wolf => wolf.moveWolf());
   }
 
 
@@ -129,17 +145,33 @@ class Game {
         console.log("colision");
       }
 // Colision entre flecha y personajes
-      if (this.link1.x < this.link2.arrows.forEach(arrow => arrow.x) + 5 &&
-        this.link1.x + 50 > this.link2.arrows.forEach(arrow => arrow.x) &&
-        this.link1.y < this.link2.arrows.forEach(arrow => arrow.y) + 30 &&
-        50+ this.link1.y > this.link2.arrows.forEach(arrow => arrow.y)) {
-         // collision detected!
-         
-     }
-
-  }
-
-
+        this.link2.arrows.forEach((arrow,index,arr) => {
   
+        if (this.link1.x < arrow.x + 5 &&
+          this.link1.x + 50 > arrow.x &&
+          this.link1.y < arrow.y + 30 &&
+          50+ this.link1.y > arrow.y) {
+            this.lifeLink1-=1
+            if(this.lifeLink1 ===0){console.log("muerto")}
+            console.log("colision flecha");
+            arr.splice(index,1);
+       }
+  });
+
+          this.link1.arrows.forEach((arrow,index,arr) => {
+   
+          if (this.link2.x < arrow.x + 5 &&
+            this.link2.x + 50 > arrow.x &&
+            this.link2.y < arrow.y + 30 &&
+            50+ this.link2.y > arrow.y) {
+              this.lifeLink2-=1
+              if(this.lifeLink2 ===0){console.log("muerto")}
+              console.log("colision flecha"); 
+              arr.splice(index,1);
+              
+         }
+    });
+  
+}
 
 }
