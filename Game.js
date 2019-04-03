@@ -60,6 +60,8 @@ class Game {
       this.ctx.clearRect(0,0,this.w,this.h);
       this.draw();
       this.move();
+      this.link1.moveLink();
+      this.link2.moveLink();
       if (this.counter===50){
       this.wolves.forEach(wolf => wolf.moveWolf());
       this.counter=0;
@@ -82,7 +84,6 @@ class Game {
     this.heartsLink1.forEach(heart => heart.drawHeart());
     this.heartsLink2.forEach(heart => heart.drawHeart());
     this.wolves.forEach(wolf => wolf.drawWolf());
-    console.log(this.link1.x);  
     
   }
   move(){
@@ -91,42 +92,42 @@ class Game {
       
       switch (e.keyCode) {
         case 38:
-        this.link2.moveLinkUp();
+        this.link2.botonPuls=true;
         this.imgLink2.src = "./images/linkrojoup.png";
         break;
         
         case 40:
-        this.link2.moveLinkDown();
+        this.link2.botonPuls=true;
         this.imgLink2.src = "./images/linkrojodown.png";
         break;
 
         case 39:
-        this.link2.moveLinkRight();
+        this.link2.botonPuls=true;
         this.imgLink2.src = "./images/linkrojoright.png";
         break;
         
         case 37:
-        this.link2.moveLinkLeft();
+        this.link2.botonPuls=true;
         this.imgLink2.src = "./images/linkrojoizq.png";
         break;
 
         case 87:
-        this.link1.moveLinkUp();
+        this.link1.botonPuls=true;
         this.imgLink1.src = "./images/linkverdearriba.png";
         break;
         
         case 83:
-        this.link1.moveLinkDown();
+        this.link1.botonPuls=true;
         this.imgLink1.src = "./images/linkverdeabajoa.png";
         break;
 
         case 68:
-        this.link1.moveLinkRight();
+        this.link1.botonPuls=true;
         this.imgLink1.src = "./images/linkverdederecha.png";
         break;
         
         case 65:
-        this.link1.moveLinkLeft();
+        this.link1.botonPuls=true;
         this.imgLink1.src = "./images/linkverdeizq.png";
         break;
 
@@ -139,11 +140,60 @@ class Game {
         break;
       }
     
-    
+      window.onkeyup = function (e) {
+        switch (e.keyCode) {
+          case 38:
+          this.link2.botonPuls=false;
+          this.imgLink2.src = "./images/linkrojoup.png";
+          break;
+          
+          case 40:
+          this.link2.botonPuls=false;
+          this.imgLink2.src = "./images/linkrojodown.png";
+          break;
+  
+          case 39:
+          this.link2.botonPuls=false;
+          this.imgLink2.src = "./images/linkrojoright.png";
+          break;
+          
+          case 37:
+          this.link2.botonPuls=false;
+          this.imgLink2.src = "./images/linkrojoizq.png";
+          break;
+  
+          case 87:
+          this.link1.botonPuls=false;
+          this.imgLink1.src = "./images/linkverdearriba.png";
+          break;
+          
+          case 83:
+          this.link1.botonPuls=false;
+          this.imgLink1.src = "./images/linkverdeabajoa.png";
+          break;
+  
+          case 68:
+          this.link1.botonPuls=false;
+          this.imgLink1.src = "./images/linkverdederecha.png";
+          break;
+          
+          case 65:
+          this.link1.botonPuls=false;
+          this.imgLink1.src = "./images/linkverdeizq.png";
+          break;
+  
+          case 18:
+          this.link1.shoot();
+          break;
+  
+          case 16:
+          this.link2.shoot();
+          break;
+        }
     }.bind(this);
     
 
-    
+  }
 
   }
 

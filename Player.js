@@ -11,6 +11,7 @@ class Link {
     this.arrows=[];
     this.dir= 0;
     this.arrowX=this.x;
+    this.botonPuls=false;
 
     // número de imágenes diferentes
     this.frames = 3;
@@ -59,10 +60,16 @@ class Link {
     }
   }
 
+  moveLink(){
+    this.moveLinkUp();
+    this.moveLinkDown();
+    this.moveLinkLeft();
+    this.moveLinkRight();
+  }
 
   moveLinkUp(){
     this.dir = 0;
-    if(this.y > 80)
+    if(this.y > 80 && this.botonPuls===false)
     {
       this.y -= this.step;
       this.animateImg();
@@ -70,7 +77,7 @@ class Link {
   }
   moveLinkDown(){
     this.dir = 90;
-    if (this.y < this.game.canvas.height -130)
+    if (this.y < this.game.canvas.height -130 && this.botonPuls===false)
     {
     this.y += this.step;
     this.animateImg();
@@ -79,7 +86,7 @@ class Link {
 
   moveLinkLeft(){
     this.dir = 135;
-    if (this.x > 90){
+    if (this.x > 90 && this.botonPuls===false){
     this.x -= this.step;
     this.animateImg();
     }
@@ -87,7 +94,7 @@ class Link {
 
   moveLinkRight(){
     this.dir=45;
-    if (this.x < this.game.canvas.width -120)
+    if (this.x < this.game.canvas.width -120 && this.botonPuls===false)
     this.x += this.step;
     this.animateImg();
   }
