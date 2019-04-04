@@ -11,8 +11,8 @@ class Game {
     this.h2 = this.h/2;   
     this.background = new Background(this);
     
+    
     this.heartsLink1=[];
-    this.lifeLink1= 3;
     this.posLink1X = 100;
     this.posLink1Y = this.h - 125;
     this.imgLink1 = new Image();
@@ -20,30 +20,35 @@ class Game {
     this.link1 = new Link(this, this.imgLink1, this.posLink1X, this.posLink1Y);
     
     this.heartsLink2=[];
-    this.lifeLink2= 3;
     this.posLink2X = 750;
     this.posLink2Y = 100;
     this.imgLink2 = new Image();
     this.imgLink2.src = "./images/linkrojoizq.png";
     this.link2 = new Link(this, this.imgLink2, this.posLink2X, this.posLink2Y);
 
-    
+    this.dirY = Math.floor(Math.random() * (5 - 1) + 1); 
     this.wolves= [];
-    this.wolves.push(new Wolf(this, this.w2, this.h2-100));
-    this.wolves.push(new Wolf(this, this.w2-100, this.h2));
-    this.wolves.push(new Wolf(this, this.w2+100, this.h2));
-    this.wolves.push(new Wolf(this, this.w2, this.h2+100));
+    this.wolves.push(new Wolf(this, this.w2, this.h2-100, 1));
+    this.wolves.push(new Wolf(this, this.w2-100, this.h2, 2));
+    this.wolves.push(new Wolf(this, this.w2+100, this.h2, 3));
+    this.wolves.push(new Wolf(this, this.w2, this.h2+100, 4));
 
+    this.imgHeartLink = new Image();
+    this.imgHeartLink.src = "./images/heart.png";
     this.heartsLink1=[];
-    this.heartsLink1.push(new Heart(this, 60, 10));
-    this.heartsLink1.push(new Heart(this, 100, 10));
-    this.heartsLink1.push(new Heart(this, 140, 10));
+    this.heartsLink1.push(new Heart(this, this.imgHeartLink,60, 10));
+    this.heartsLink1.push(new Heart(this,this.imgHeartLink, 100, 10));
+    this.heartsLink1.push(new Heart(this,this.imgHeartLink, 140, 10));
 
     this.heartsLink2=[];
-    this.heartsLink2.push(new Heart(this, 710, 10));
-    this.heartsLink2.push(new Heart(this, 750, 10));
-    this.heartsLink2.push(new Heart(this, 790, 10));
+    this.heartsLink2.push(new Heart(this, this.imgHeartLink, 710, 10));
+    this.heartsLink2.push(new Heart(this,this.imgHeartLink, 750, 10));
+    this.heartsLink2.push(new Heart(this,this.imgHeartLink, 790, 10));
     
+
+    this.audio= new Audio("sounds/07 - mini-game.mp3");
+    this.audio.onload = this.startGame();
+
     this.framescounter=0;
     this.counter = 0;
     this.intervalId;
@@ -52,27 +57,42 @@ class Game {
   }
 
 
-
   startGame() {
+    this.audio.play();
+
     this.intervalId = setInterval(()=>{
-      this.framescounter++
-      this.counter++;
+     
       this.ctx.clearRect(0,0,this.w,this.h);
+      this.framescounter++;
+      this.counter++;
       this.draw();
       this.link1.moveLink();
       this.link2.moveLink();
-      if (this.counter===50){
+      if (this.counter % 75 ===0) {
+        this.wolves.forEach(wolf => wolf.dirWolf());
+        if (this.counter===100) {this.counter = 0 ;} 
+      }
       this.wolves.forEach(wolf => wolf.moveWolf());
-      this.counter=0;
-    }
       this.colision();
+      this.stopGame();
       
 
     }, 1000/60);
+    
   }
 
+  
+
   stopGame() {
-    clearInterval(this.intervalId);
+    if (this.link1.life ===0){
+      console.log("Player 2 Wins");
+      // clearInterval(this.intervalId);
+    }
+    if (this.link2.life ===0){
+      console.log("Player 1 Wins");
+      // clearInterval(this.intervalId);
+    }
+    
   }
 
 
@@ -211,6 +231,22 @@ class Game {
         console.log("colision");
       }
 
+
+      //Colision entre lobos y paredes
+      this.wolves.forEach(lobo =>{
+
+        if (lobo.y < 80 || lobo.y > this.h-130 ||
+          lobo.x < 90 || lobo.x > this.w -120
+            ){
+            lobo.x = lobo.lastX;
+            lobo.y= lobo.lastY;
+            lobo.dirWolf()
+            console.log("colision");
+          }
+
+      });
+
+
       //Colision entre player1 y lobos
       this.wolves.forEach(lobo =>{
 
@@ -220,12 +256,14 @@ class Game {
           50 + this.link1.y > lobo.y){
             this.link1.x = this.link1.lastX;
             this.link1.y= this.link1.lastY;
-            this.lifeLink1-=1;
+            this.link1.life-=1;
             this.heartsLink1.pop();
             console.log("colision");
           }
 
       });
+
+
      
 
       //Colision entre player 2 y lobos
@@ -238,7 +276,7 @@ class Game {
           50 + this.link2.y > lobo.y){
             this.link2.x = this.link2.lastX;
             this.link2.y= this.link2.lastY;
-            this.lifeLink2-=1;
+            this.link2.life-=1;
             this.heartsLink2.pop();
             console.log("colision");
           }
@@ -252,9 +290,9 @@ class Game {
           this.link1.x + 50 > arrow.x &&
           this.link1.y < arrow.y + 30 &&
           50+ this.link1.y > arrow.y) {
-            this.lifeLink1-=1
+            this.link1.life-=1
             this.heartsLink1.pop();
-            if(this.lifeLink1 ===0){console.log("muerto")}
+            if(this.link1.life ===0){console.log("muerto")}
             console.log("colision flecha");
             arr.splice(index,1);
        }
@@ -266,9 +304,9 @@ class Game {
             this.link2.x + 50 > arrow.x &&
             this.link2.y < arrow.y + 30 &&
             50+ this.link2.y > arrow.y) {
-              this.lifeLink2-=1
+              this.link2.life-=1
               this.heartsLink2.shift();
-              if(this.lifeLink2 ===0){console.log("muerto")}
+              if(this.link2.life ===0){console.log("muerto")}
               console.log("colision flecha"); 
               arr.splice(index,1);
               
@@ -296,6 +334,9 @@ class Game {
           }
        }
   });
+
+
+
 //Colision entre lobos y flechas Link1
   this.link1.arrows.forEach((arrow,index,arr) => {
 

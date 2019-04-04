@@ -4,7 +4,7 @@ class Arrow {
     
     
     this.img = new Image();
-    this.img.src = "./images/arrow1.png";
+    this.img.src = "./images/arrowUp.png";
     this.x=posIniX;
     this.y= posIniY;
     this.step = 7;

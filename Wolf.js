@@ -1,5 +1,5 @@
 class Wolf {
-  constructor(game, posIniX, posIniY) {
+  constructor(game, posIniX, posIniY, dirY) {
     this.game = game;
     
     this.imgWolf = new Image();
@@ -7,14 +7,14 @@ class Wolf {
     this.x=this.game.w2;
     this.y= this.game.h2;
     this.dif=850;
-    this.vy=30;
+    this.vy=1;
     this.yBot=this.y+this.dif;
     this.counterY=0;
     this.counterX=0;
     this.stepMaxX= 200;
     this.stepMaxY= 200;
-    this.dirY;
-    this.imgWidht=110;
+    this.dirY = dirY;
+    this.imgWidht=115;
     this.x= posIniX;
     this.y=posIniY;
     this.lastX = 0;
@@ -46,7 +46,7 @@ class Wolf {
 
   animateImg() {
     // se va cambiando el frame. Cuanto mayor es el módulo, mas lento se mueve el personaje
-    if (this.game.framescounter % 60 === 0) {
+    if (this.game.framescounter % 6 === 0) {
       this.frameIndex += 1;
 
       // Si el frame es el último, se vuelve al primero
@@ -54,42 +54,43 @@ class Wolf {
     }
   }
 
+  dirWolf(){
+    this.dirY= Math.floor(Math.random() * (5 - 1) + 1);  
+  }
 
   moveWolf() {
+    console.log(this.dirY, this.game.framescounter)
 
-    console.log(this.game.framescounter)
-    if (this.game.framescounter % 30 === 0){
-    this.dirY= Math.floor(Math.random() * (5 - 1) + 1);    
-    if((this.y > 80) && (this.y < this.game.canvas.height -130) && (this.x > 90) && (this.x < this.game.canvas.width -120))
-    {
         if (this.dirY ===1){ 
-          if (this.y <= 80){this.y = 200;}
           this.imgWolf.src = "./images/wolfup.png";
           this.lastY=this.y;
           this.y -= this.vy;
+          this.animateImg();
         }
         if (this.dirY ===2){ 
-          if (this.y >= this.game.canvas.height -130){this.y = this.canvas.height -300;}
           this.imgWolf.src = "./images/wolfdown.png";
           this.lastY=this.y;
           this.y += this.vy;
+          this.animateImg();
+          
         }
         if (this.dirY ===3){
-          if (this.x <= 90){this.x = 300;}
           this.imgWolf.src = "./images/wolfizquierda.png";
           this.lastX=this.x;
            this.x -= this.vy;
-          }
+           this.animateImg();
+        }
+          
         if (this.dirY ===4){
-          if (this.x >= this.game.canvas.width-120){this.x = this.game.canvas.width-300;}
           this.imgWolf.src = "./images/wolfderecha.png";
           this.lastX=this.x;
            this.x += this.vy;
+           this.animateImg();
           }
     }
-  }
+  
     
-    }
+    
 
 
    

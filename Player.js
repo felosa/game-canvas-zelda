@@ -17,6 +17,7 @@ class Link {
     this.botonPulsLeft=false;
     this.lastX=0;
     this.lastY=0;
+    this.life=3;
 
 
     // número de imágenes diferentes

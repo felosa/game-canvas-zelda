@@ -1,9 +1,9 @@
 class Heart {
-  constructor(game, posIniHeartX, posIniHeartY) {
+  constructor(game, img, posIniHeartX, posIniHeartY) {
     this.game = game;
     
-    this.imgHeart = new Image();
-    this.imgHeart.src = "./images/heart.png";
+    this.imgHeart = img;
+    
     this.x=posIniHeartX;
     this.y=posIniHeartY;
 
