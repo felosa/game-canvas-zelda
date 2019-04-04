@@ -28,7 +28,7 @@ class Game {
 
     this.dirY = Math.floor(Math.random() * (5 - 1) + 1); 
     this.wolves= [];
-    this.wolves.push(new Wolf(this, this.w2, this.h2-100, 1));
+    this.wolves.push(new Wolf(this, this.w2, this.h2-100, 2));
     this.wolves.push(new Wolf(this, this.w2-100, this.h2, 2));
     this.wolves.push(new Wolf(this, this.w2+100, this.h2, 3));
     this.wolves.push(new Wolf(this, this.w2, this.h2+100, 4));
