@@ -49,6 +49,11 @@ class Game {
     this.audio= new Audio("sounds/07 - mini-game.mp3");
     this.audio.onload = this.startGame();
 
+    this.imgLink1Wins = new Image();
+    this.imgLink1Wins.src = "./images/greenwins.png";
+    this.imgLink2Wins = new Image();
+    this.imgLink2Wins.src = "./images/redwins.png";
+
     this.framescounter=0;
     this.counter = 0;
     this.intervalId;
@@ -85,12 +90,24 @@ class Game {
 
   stopGame() {
     if (this.link1.life ===0){
-      console.log("Player 2 Wins");
-      // clearInterval(this.intervalId);
+        console.log("Player 2 Wins");
+        clearInterval(this.intervalId);
+        this.audio= new Audio("sounds/OOT_Fanfare_Item.wav")
+        this.audio.play()
+        this.ctx.drawImage(this.imgLink2Wins,0, 0);
+      
+      
     }
     if (this.link2.life ===0){
       console.log("Player 1 Wins");
-      // clearInterval(this.intervalId);
+      clearInterval(this.intervalId);
+      this.audio= new Audio("sounds/OOT_Fanfare_Item.wav")
+      this.audio.play()
+      this.ctx.drawImage(this.imgLink1Wins,
+        0,
+        0);
+      
+      
     }
     
   }
@@ -256,8 +273,8 @@ class Game {
           50 + this.link1.y > lobo.y){
             this.link1.x = this.link1.lastX;
             this.link1.y= this.link1.lastY;
-            this.link1.life-=1;
             this.heartsLink1.pop();
+            this.link1.life-=1;
             console.log("colision");
           }
 
@@ -276,8 +293,8 @@ class Game {
           50 + this.link2.y > lobo.y){
             this.link2.x = this.link2.lastX;
             this.link2.y= this.link2.lastY;
-            this.link2.life-=1;
             this.heartsLink2.pop();
+            this.link2.life-=1;
             console.log("colision");
           }
 
@@ -290,8 +307,8 @@ class Game {
           this.link1.x + 50 > arrow.x &&
           this.link1.y < arrow.y + 30 &&
           50+ this.link1.y > arrow.y) {
-            this.link1.life-=1
             this.heartsLink1.pop();
+            this.link1.life-=1
             if(this.link1.life ===0){console.log("muerto")}
             console.log("colision flecha");
             arr.splice(index,1);
@@ -304,8 +321,8 @@ class Game {
             this.link2.x + 50 > arrow.x &&
             this.link2.y < arrow.y + 30 &&
             50+ this.link2.y > arrow.y) {
-              this.link2.life-=1
               this.heartsLink2.shift();
+              this.link2.life-=1
               if(this.link2.life ===0){console.log("muerto")}
               console.log("colision flecha"); 
               arr.splice(index,1);

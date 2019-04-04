@@ -59,7 +59,6 @@ class Wolf {
   }
 
   moveWolf() {
-    console.log(this.dirY, this.game.framescounter)
 
         if (this.dirY ===1){ 
           this.imgWolf.src = "./images/wolfup.png";

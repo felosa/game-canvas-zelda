@@ -62,8 +62,13 @@ class Game1 {
     this.intervalId;
     this.setListener();
 
-    this.audioVs= new Audio("sounds/19 - last battle.mp3");
+    this.audioVs= new Audio("sounds/08 - boss battle.mp3");
     this.audioVs.onload = this.startGame();
+
+    this.imgLink1Wins = new Image();
+    this.imgLink1Wins.src = "./images/greenwins.png";
+    this.imgDragonWins = new Image();
+    this.imgDragonWins.src = "./images/dragonwinsb.png";
   
   }
 
@@ -88,13 +93,24 @@ class Game1 {
       if (this.counter===100) {this.counter = 0 ;}
 
       this.colision();
+      this.stopGame();
       
 
     }, 1000/60);
   }
 
   stopGame() {
-    clearInterval(this.intervalId);
+    if (this.link1.life ===0){
+        clearInterval(this.intervalId);
+        this.ctx.drawImage(this.imgDragonWins,0, 0);
+      
+      
+    }
+    if (this.lifeDragon ===0){
+      clearInterval(this.intervalId);
+      this.ctx.drawImage(this.imgLink1Wins,0, 0);
+    }
+    
   }
 
 
@@ -192,7 +208,6 @@ this.walls.forEach(wall =>{
     50 + this.link1.y > wall.y){
       this.link1.x = this.link1.lastX;
       this.link1.y= this.link1.lastY;
-      console.log("colision");
     }
 
 });
@@ -207,7 +222,7 @@ this.dragon.fireballs.forEach((bola,index,arr) => {
       this.walls[i].y < bola.y + 50 &&
       57+ this.walls[i].y > bola.y) {
         
-        console.log("colision bola");
+       
         arr.splice(index,1);
       }
    }
@@ -224,7 +239,7 @@ this.wolves.forEach(lobo =>{
         this.link1.y= this.link1.lastY;
         this.link1.life-=1;
         this.heartsLink1.pop();
-        console.log("colision");
+       
       }
 
 });
@@ -240,9 +255,8 @@ this.dragon.fireballs.forEach((bola,index,arr) => {
     50+ this.link1.y > bola.y) {
       this.link1.life-=1;
       this.heartsLink1.pop();
-      if(this.link1.life ===0){console.log("muerto");}
       arr.splice(index,1);
-      console.log("colision", this.link1.x );
+    
   }
 });
 
@@ -258,8 +272,6 @@ this.link1.arrows.forEach((arrow,index,arr) => {
     150+ this.dragon.y > arrow.y) {
       this.lifeDragon-=1
       this.heartsDragon.shift();
-      if(this.lifeDragon ===0){console.log("muerto")}
-      console.log("colision flecha");
       arr.splice(index,1);
  }
 });
@@ -277,7 +289,6 @@ this.link1.arrows.forEach((arrow,index,arr) => {
           lobo.x = lobo.lastX;
           lobo.y= lobo.lastY;
           lobo.dirWolf()
-          console.log("colision");
         }
 
     });
@@ -323,7 +334,6 @@ this.link1.arrows.forEach((arrow,index,arr) => {
         this.wolves[i].y < arrow.y + 30 &&
         50+ this.wolves[i].y > arrow.y) {
           
-          console.log("colision flecha");
           arr.splice(index,1);
         }
     }
