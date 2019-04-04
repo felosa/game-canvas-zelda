@@ -156,7 +156,7 @@ class Game {
         this.link1.shoot();
         break;
 
-        case 16:
+        case 80:
         this.link2.shoot();
         break;
       }

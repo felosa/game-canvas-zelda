@@ -63,27 +63,27 @@ class Wolf {
 
         if (this.dirY ===1){ 
           this.imgWolf.src = "./images/wolfup.png";
-          this.lastY=this.y;
+          this.lastY=this.y+20;
           this.y -= this.vy;
           this.animateImg();
         }
         if (this.dirY ===2){ 
           this.imgWolf.src = "./images/wolfdown.png";
-          this.lastY=this.y;
+          this.lastY=this.y-10;
           this.y += this.vy;
           this.animateImg();
           
         }
         if (this.dirY ===3){
           this.imgWolf.src = "./images/wolfizquierda.png";
-          this.lastX=this.x;
+          this.lastX=this.x+10;
            this.x -= this.vy;
            this.animateImg();
         }
           
         if (this.dirY ===4){
           this.imgWolf.src = "./images/wolfderecha.png";
-          this.lastX=this.x;
+          this.lastX=this.x-10;
            this.x += this.vy;
            this.animateImg();
           }

@@ -197,7 +197,21 @@ this.walls.forEach(wall =>{
 
 });
 
+//Colision entre bolas de fuego y muros
 
+this.dragon.fireballs.forEach((bola,index,arr) => {
+
+  for (var i=0; i< this.walls.length; i++) {
+    if (this.walls[i].x < bola.x + 50 &&
+      this.walls[i].x + 127 > bola.x &&
+      this.walls[i].y < bola.y + 50 &&
+      57+ this.walls[i].y > bola.y) {
+        
+        console.log("colision bola");
+        arr.splice(index,1);
+      }
+   }
+});
 
       //Colision entre player1 y lobos
 this.wolves.forEach(lobo =>{
@@ -257,7 +271,7 @@ this.link1.arrows.forEach((arrow,index,arr) => {
     //Colision entre lobos y paredes
     this.wolves.forEach(lobo =>{
 
-      if (lobo.y < 80 || lobo.y > this.h-130 ||
+      if (lobo.y < 90 || lobo.y > this.h-130 ||
         lobo.x < 90 || lobo.x > this.w -120
           ){
           lobo.x = lobo.lastX;
@@ -283,21 +297,7 @@ this.link1.arrows.forEach((arrow,index,arr) => {
          
     
 
-    //Colision entre bolas de fuego y muros
-
-    this.dragon.fireballs.forEach((bola,index,arr) => {
-
-      for (var i=0; i< this.walls.length; i++) {
-        if (this.walls[i].x < bola.x + 5 &&
-          this.walls[i].x + 50 > bola.x &&
-          this.walls[i].y < bola.y + 30 &&
-          50+ this.walls[i].y > bola.y) {
-            
-            console.log("colision bola");
-            arr.splice(index,1);
-          }
-       }
-  });
+    
 
   //Colision entre lobos y muros
 
