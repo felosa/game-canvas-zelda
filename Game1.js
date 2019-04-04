@@ -83,7 +83,7 @@ class Game1 {
         this.dragon.dirDragon();
         
       }
-      if (this.counter %90 ===0){this.dragon.shootBall();}
+      if (this.counter % 90 ===0){this.dragon.shootBall();}
       this.wolves.forEach(wolf => wolf.moveWolf());
       if (this.counter===100) {this.counter = 0 ;}
 
@@ -180,7 +180,7 @@ class Game1 {
   // }
 
 
-  colision(){
+colision(){
     
 
 //Colision entre player1 y muros
@@ -200,36 +200,36 @@ this.walls.forEach(wall =>{
 
 
       //Colision entre player1 y lobos
-      this.wolves.forEach(lobo =>{
+this.wolves.forEach(lobo =>{
 
-        if (this.link1.x < lobo.x + 50 &&
-          this.link1.x + 50 > lobo.x  &&
-          this.link1.y < lobo.y + 50 &&
-          50 + this.link1.y > lobo.y){
-            this.link1.x = this.link1.lastX;
-            this.link1.y= this.link1.lastY;
-            this.link1.life-=1;
-            this.heartsLink1.pop();
-            console.log("colision");
-          }
+  if (this.link1.x < lobo.x + 50 &&
+      this.link1.x + 50 > lobo.x  &&
+      this.link1.y < lobo.y + 50 &&
+      50 + this.link1.y > lobo.y){
+        this.link1.x = this.link1.lastX;
+        this.link1.y= this.link1.lastY;
+        this.link1.life-=1;
+        this.heartsLink1.pop();
+        console.log("colision");
+      }
 
-      });
+});
      
 
-//Colision entre bolas y personajes
+//Colision entre bolas y personaje
 
 this.dragon.fireballs.forEach((bola,index,arr) => {
   
-  if (this.link1.x < bola.x + 30 &&
+  if (this.link1.x < bola.x + 50 &&
     this.link1.x + 50 > bola.x &&
     this.link1.y < bola.y + 30 &&
     50+ this.link1.y > bola.y) {
-      this.Link1.life-=1;
+      this.link1.life-=1;
       this.heartsLink1.pop();
-      if(this.link1.life ===0){console.log("muerto")}
-      console.log("colision flecha");
+      if(this.link1.life ===0){console.log("muerto");}
       arr.splice(index,1);
- }
+      console.log("colision", this.link1.x );
+  }
 });
 
  
