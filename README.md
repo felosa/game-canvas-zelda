@@ -1,5 +1,4 @@
-# ARROW HACKER
-
+![Alt Text](https://github.com/felosa/game-canvas-zelda/blob/master/images/ironhacker.png?raw=true)
 
 ## INTRODUCCIÓN
 Es un juego realizado en HTML5 canvas donde hay dos modos de juego.
@@ -33,8 +32,8 @@ Juego Individual: IMPLEMENTADO MAS TARDE.
   
   
 ## ENLACE A JUEGO
-
-[GAME](https://felosa.github.io/game-canvas-zelda/)
+[GAME](https://felosa.github.io/game-canvas-zelda/)                                                                                 
+![Alt Text](http://pluspng.com/img-png/link-zelda-png-archivo-link-en-ww14-png-336.png)
 
 
  
