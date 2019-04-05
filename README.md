@@ -5,6 +5,9 @@ Es un juego realizado en HTML5 canvas donde hay dos modos de juego.
 
 ## ORIGEN DEL JUEGO
   No soy un gran gamer pero cuando era pequeño jugué al Zelda: Ocarina of Time para N64 y desde entonces sigue siendo el juego al que más cariño le tengo, por eso pensé en hacer que los players fueran Link. 
+  ![Alt Text](https://i.pinimg.com/originals/12/af/f4/12aff4ef860ccc2f2beb4715cfd9c1ae.gif)
+
+
   
 ## OBJETIVO
 Todos contra todos: Era la idea inicial en lo que me centré al principio. 
