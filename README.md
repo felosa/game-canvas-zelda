@@ -1,5 +1,5 @@
 # ARROW HACKER
-
+![Alt Text](https://drive.google.com/open?id=1Jgw4ByOJRyDDi9_8_1P_qbRHWuH7EUVO)
 ## INTRODUCCIÓN
 Es un juego realizado en HTML5 canvas donde hay dos modos de juego.
 
@@ -10,7 +10,7 @@ Es un juego realizado en HTML5 canvas donde hay dos modos de juego.
 
   
 ## OBJETIVO
-Todos contra todos: Era la idea inicial en lo que me centré al principio. 
+Todos contra todos: Era la idea inicial y en lo que me centré al principio. 
   Consiste en quitarle 3 vidas al contrario disparandole flechas. Los lobos te matan en el acto y no pueden ser matados.
   
 Juego Individual: Pensé que si alguien quería jugar solo tenía que implementar algo nuevo, así que implementé un nuevo modo de juego.
