@@ -25,7 +25,9 @@ Juego Individual: IMPLEMENTADO MAS TARDE.
   
 ## ASPECTOS A MEJORAR EN UN FUTURO
   Elegir entre 2 y 4 JUGADORES Y COLORES. 
+  
   Mejoras de ARMAS,3 flechas a la vez.
+  
   REFACTORIZAR COLISIONES.
   
 ## MUCHAS GRACIAS!!!!
