@@ -5,6 +5,7 @@ Es un juego realizado en HTML5 canvas donde hay dos modos de juego.
 
 ## ORIGEN DEL JUEGO
    Zelda: Ocarina of Time para N64: EL JUEGO
+   
   ![Alt Text](https://i.pinimg.com/originals/12/af/f4/12aff4ef860ccc2f2beb4715cfd9c1ae.gif)
 
 
