@@ -23,7 +23,6 @@ class Link {
     // número de imágenes diferentes
     this.frames = 3;
     this.frameIndex = 0;
-    this.audioArrow= new Audio("sounds/OOT_Arrow_Hit.wav");
 
     
   }
@@ -130,7 +129,6 @@ class Link {
 
 
   shoot(){
-    this.audioArrow.play();
     this.arrows.push(new Arrow(this, this.x, this.y, this.dir));
   }
 

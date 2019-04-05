@@ -91,7 +91,7 @@ class Game {
 
   stopGame() {
     if (this.link1.life ===0){
-        console.log("Player 2 Wins");
+       
         clearInterval(this.intervalId);
         this.audio.pause();
         this.audio= new Audio("sounds/OOT_Fanfare_Item.wav")
@@ -101,7 +101,7 @@ class Game {
       
     }
     if (this.link2.life ===0){
-      console.log("Player 1 Wins");
+     
       clearInterval(this.intervalId);
       this.audio.pause();
       this.audio= new Audio("sounds/OOT_Fanfare_Item.wav")
@@ -248,7 +248,7 @@ class Game {
         this.link1.y= this.link1.lastY;
         this.link2.x = this.link2.lastX;
         this.link2.y= this.link2.lastY;
-        console.log("colision");
+       
       }
 
 
@@ -261,7 +261,7 @@ class Game {
             lobo.x = lobo.lastX;
             lobo.y= lobo.lastY;
             lobo.dirWolf()
-            console.log("colision");
+          
           }
 
       });
@@ -278,7 +278,7 @@ class Game {
             this.link1.y= this.link1.lastY;
             this.heartsLink1.pop();
             this.link1.life-=1;
-            console.log("colision");
+           
           }
 
       });
@@ -298,7 +298,7 @@ class Game {
             this.link2.y= this.link2.lastY;
             this.heartsLink2.pop();
             this.link2.life-=1;
-            console.log("colision");
+           
           }
 
       });
@@ -312,8 +312,8 @@ class Game {
           50+ this.link1.y > arrow.y) {
             this.heartsLink1.pop();
             this.link1.life-=1
-            if(this.link1.life ===0){console.log("muerto")}
-            console.log("colision flecha");
+          
+         
             arr.splice(index,1);
        }
   });
@@ -326,8 +326,8 @@ class Game {
             50+ this.link2.y > arrow.y) {
               this.heartsLink2.shift();
               this.link2.life-=1
-              if(this.link2.life ===0){console.log("muerto")}
-              console.log("colision flecha"); 
+             
+             
               arr.splice(index,1);
               
          }
@@ -349,7 +349,7 @@ class Game {
           this.wolves[i].y < arrow.y + 30 &&
           50+ this.wolves[i].y > arrow.y) {
             
-            console.log("colision flecha");
+           
             arr.splice(index,1);
           }
        }
@@ -366,7 +366,7 @@ class Game {
         this.wolves[i].y < arrow.y + 30 &&
         50+ this.wolves[i].y > arrow.y) {
           
-          console.log("colision flecha");
+        
           arr.splice(index,1);
         }
      }
