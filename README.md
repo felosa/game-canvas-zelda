@@ -1,4 +1,4 @@
-![Alt Text](https://github.com/felosa/game-canvas-zelda/blob/master/images/ironhacker.png?raw=true)
+![Alt Text](https://github.com/felosa/game-canvas-zelda/blob/master/images/ArrowHacker.png?raw=true)
 
 ## INTRODUCCIÓN
 Es un juego realizado en HTML5 canvas donde hay dos modos de juego.
