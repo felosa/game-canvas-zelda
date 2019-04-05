@@ -15,8 +15,8 @@ class Link {
     this.botonPulsDown=false;
     this.botonPulsRight=false;
     this.botonPulsLeft=false;
-    this.lastX=0;
-    this.lastY=0;
+    this.lastX=this.x;
+    this.lastY=this.y;
     this.life=3;
 
 

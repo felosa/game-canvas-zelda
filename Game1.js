@@ -26,7 +26,7 @@ class Game1 {
     
     this.dirY = Math.floor(Math.random() * (5 - 1) + 1); 
     this.wolves= [];
-    this.wolves.push(new Wolf(this, this.w2, this.h2-100, 2));
+    this.wolves.push(new Wolf(this, this.w2, this.h2-100, 1));
     this.wolves.push(new Wolf(this, this.w2-100, this.h2, 2));
     this.wolves.push(new Wolf(this, this.w2+100, this.h2, 3));
     this.wolves.push(new Wolf(this, this.w2, this.h2+100, 4));
@@ -62,8 +62,8 @@ class Game1 {
     this.intervalId;
     this.setListener();
 
-    this.audioVs= new Audio("sounds/08 - boss battle.mp3");
-    this.audioVs.onload = this.startGame();
+    this.audio= new Audio("sounds/08 - boss battle.mp3");
+    this.audio.onload = this.startGame();
 
     this.imgLink1Wins = new Image();
     this.imgLink1Wins.src = "./images/greenwins.png";
@@ -75,7 +75,7 @@ class Game1 {
 
 
   startGame() {
-    this.audioVs.play();
+    this.audio.play();
     this.intervalId = setInterval(()=>{
       this.framescounter++
       this.counter++;
@@ -102,12 +102,18 @@ class Game1 {
   stopGame() {
     if (this.link1.life ===0){
         clearInterval(this.intervalId);
+        this.audio.pause();
+        this.audio= new Audio("sounds/mario-bros game over.mp3")
+        this.audio.play();
         this.ctx.drawImage(this.imgDragonWins,0, 0);
       
       
     }
     if (this.lifeDragon ===0){
       clearInterval(this.intervalId);
+      this.audio.pause();
+      this.audio= new Audio("sounds/OOT_Fanfare_Item.wav")
+      this.audio.play();
       this.ctx.drawImage(this.imgLink1Wins,0, 0);
     }
     

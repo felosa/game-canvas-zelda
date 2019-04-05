@@ -28,7 +28,7 @@ class Game {
 
     this.dirY = Math.floor(Math.random() * (5 - 1) + 1); 
     this.wolves= [];
-    this.wolves.push(new Wolf(this, this.w2, this.h2-100, 2));
+    this.wolves.push(new Wolf(this, this.w2, this.h2-100, 1));
     this.wolves.push(new Wolf(this, this.w2-100, this.h2, 2));
     this.wolves.push(new Wolf(this, this.w2+100, this.h2, 3));
     this.wolves.push(new Wolf(this, this.w2, this.h2+100, 4));
@@ -48,6 +48,7 @@ class Game {
 
     this.audio= new Audio("sounds/07 - mini-game.mp3");
     this.audio.onload = this.startGame();
+
 
     this.imgLink1Wins = new Image();
     this.imgLink1Wins.src = "./images/greenwins.png";
@@ -92,8 +93,9 @@ class Game {
     if (this.link1.life ===0){
         console.log("Player 2 Wins");
         clearInterval(this.intervalId);
+        this.audio.pause();
         this.audio= new Audio("sounds/OOT_Fanfare_Item.wav")
-        this.audio.play()
+        this.audio.play();
         this.ctx.drawImage(this.imgLink2Wins,0, 0);
       
       
@@ -101,8 +103,9 @@ class Game {
     if (this.link2.life ===0){
       console.log("Player 1 Wins");
       clearInterval(this.intervalId);
+      this.audio.pause();
       this.audio= new Audio("sounds/OOT_Fanfare_Item.wav")
-      this.audio.play()
+      this.audio.play();
       this.ctx.drawImage(this.imgLink1Wins,
         0,
         0);

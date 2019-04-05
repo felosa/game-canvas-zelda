@@ -17,8 +17,8 @@ class Wolf {
     this.imgWidht=115;
     this.x= posIniX;
     this.y=posIniY;
-    this.lastX = 0;
-    this.lastY=0;
+    this.lastX = this.x;
+    this.lastY=this.y;
 
     this.frames = 3;
     this.frameIndex = 0;
