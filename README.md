@@ -24,6 +24,13 @@ Juego Individual: Pensé que si alguien quería jugar solo tenía que implementa
   También quiero poner un poder nuevo, con un item en forma de arco que apareciera de manera random en el mapa y hacer que cogiéndolo puedas disparar 3 flechas a la vez, en diferentes direcciones. 
   También me gustaría refactorizar el método de las colisiones ya que he creado varias funciones diferentes y sé que puedo hacerlo solo en una función cambiando simplemente las variables para cada elemento.
   
+## AGRADECIMIENTOS
+  Me gustaría agradecer a los TA's, a Dani y Ironhackers su ayuda para poder realizar este proyecto, pero sobre todo a mis compañeros, que hemos estado muy unidos ayudandonos todos entre nosotros, así que un aplauso para ellos porfavor. 
+  
+  
+## ENLACE A JUEGO
+
+[GAME](https://felosa.github.io/game-canvas-zelda/)
 
 
  
