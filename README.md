@@ -1,3 +1,9 @@
+## ENLACE A JUEGO
+[PROBAR EL JUEGO](https://felosa.github.io/game-canvas-zelda/)                                                                                 
+
+
+
+
 ![Alt Text](https://github.com/felosa/game-canvas-zelda/blob/master/images/ArrowHacker.png?raw=true)
 
 ## INTRODUCCIÓN
@@ -34,8 +40,7 @@ Juego Individual: IMPLEMENTADO MAS TARDE.
 ## MUCHAS GRACIAS!!!!
   
   
-## ENLACE A JUEGO
-[PROBAR EL JUEGO](https://felosa.github.io/game-canvas-zelda/)                                                                                 
+
 
 
  
