@@ -35,8 +35,7 @@ Juego Individual: IMPLEMENTADO MAS TARDE.
   
   
 ## ENLACE A JUEGO
-[GAME](https://felosa.github.io/game-canvas-zelda/)                                                                                 
-![Alt Text](http://pluspng.com/img-png/link-zelda-png-archivo-link-en-ww14-png-336.png)
+[PROBAR EL JUEGO](https://felosa.github.io/game-canvas-zelda/)                                                                                 
 
 
  
